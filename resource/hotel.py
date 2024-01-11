@@ -24,3 +24,21 @@ class Hoteis(Resource):
     def get(self):
         return{'Hoteis':hoteis}
     #a library do flask converte o dict automaticamente para json
+    
+class Hotel(Resource):
+    
+    def get(self, hotel_id):
+        for hotel in hoteis:
+            if hotel['hotel_id'] == hotel_id:
+                return hotel
+            
+            return {'message': 'Hotel not found.'}, 404 #not found
+    
+    def post(self, hotel_id):
+        pass
+    
+    def put(self, hotel_id):
+        pass
+    
+    def delete(self, hotel_id):
+        pass

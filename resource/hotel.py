@@ -45,8 +45,8 @@ class Hotel(Resource):
     argumentos = reqparse.RequestParser()
     argumentos.add_argument('nome')
     argumentos.add_argument('estrelas')
-    argumentos.add_arguments('diaria')
-    argumentos.add_arguments('cidade')
+    argumentos.add_argument('diaria')
+    argumentos.add_argument('cidade')
         
     def find_hotel(hotel_id):
         for hotel in hoteis:
@@ -65,12 +65,16 @@ class Hotel(Resource):
         novo_hotel = HotelModel(hotel_id,**dados)
         novo_hotel = {"hotel_id": hotel_id, **dados}
         hoteis.append(novo_hotel)
-        return novo_hotel, 200
+        return novo_hotel, 201
         
     def put(self, hotel_id):
         dados = Hotel.argumentos.parse_args()   
         hotel_objeto = {"hotel_id": hotel_id, **dados}
         novo_hotel = hotel_objeto.json()
+        hotel = Hotel.find_hotel(hotel_id)
+        if hotel:
+            hotel.update(novo_hotel)
+            return hotel,200
         hoteis.append(novo_hotel), 201#criado    
         return novo_hotel
     

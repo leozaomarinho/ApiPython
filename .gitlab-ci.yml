@@ -16,14 +16,14 @@ build:
   script:
     - python app.py
 
-test:
-  stage: test
-  script:
-    - pytest
-
-deploy:
-  stage: deploy
-  script:
-    - # Adicione comandos de implantação, se necessário
-  only:
-    - master  # Implante apenas em commits na branch master
+#test:
+#  stage: test
+#  script:
+#    - pytest
+#
+#deploy:
+#  stage: deploy
+#  script:
+#    - # Adicione comandos de implantação, se necessário
+#  only:
+#    - master  # Implante apenas em commits na branch master

@@ -1,8 +1,8 @@
 # Use uma imagem base do Python
 FROM python:latest
 
-# Define o diretório de trabalho dentro do contêiner
-WORKDIR /app
+
+WORKDIR /app 
 
 # Copia os arquivos do projeto para o contêiner
 COPY . /app

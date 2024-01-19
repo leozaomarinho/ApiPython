@@ -45,11 +45,10 @@ class Hotel(Resource):
             return {'message':'Hotel id"{}"already exists.'.format(hotel_id)}, 400
         
         dados = Hotel.argumentos.parse_args()
-        novo_hotel = HotelModel(hotel_id,**dados)
-        novo_hotel = {"hotel_id": hotel_id, **dados}
-        hoteis.append(novo_hotel)
-        return novo_hotel, 201
-        
+        hotel = HotelModel(hotel_id,**dados)
+        hotel.save_hotel()
+        return hotel.json()                
+                            
     def put(self, hotel_id):
         dados = Hotel.argumentos.parse_args()   
         hotel_objeto = {"hotel_id": hotel_id, **dados}

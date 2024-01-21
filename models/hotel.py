@@ -1,11 +1,12 @@
 from sqlalchemy import banco
+
 __tablename__ = 'hoteis'
     
-hotel_id = banco.Columns(banco.String, primary_key=True)
-nome = banco.Columns(banco.String(80))
-estrelas = banco.Columns(banco.Float(precision=1))
-diaria = banco.Columns(banco.Float(precision=2))
-cidade = banco.Columns(banco.String(40))
+hotel_id = banco.Column(banco.String, primary_key=True)
+nome = banco.Column(banco.String(80))
+estrelas = banco.Column(banco.Float(precision=1))
+diaria = banco.Column(banco.Float(precision=2))
+cidade = banco.Column(banco.String(40))
 
 class Hotel(banco.Model):    
     def __init__(self,hotel_id, nome, estrelas,diaria,cidade):
@@ -33,3 +34,9 @@ class Hotel(banco.Model):
     def save_hotel(self):
         banco.session.add(self)
         banco.session.commit()
+        
+    def update_hotel(self, nome,estrelas,diaria,cidade):
+        self.nome = nome
+        self.estrelas = estrelas
+        self.diaria = diaria
+        self.cidade = cidade

@@ -1,0 +1,30 @@
+stages:
+  - build
+  - test
+  - deploy
+
+#variables:
+
+
+before_script:
+  - python -m venv venv
+  - source \apiPython\Scripts\activate.bat
+  - pip install -r requirements.txt
+
+build:
+  stage: build
+  script:
+    - python app.py
+
+test:
+  stage: test
+  script:
+    - echo "utilizar pytest"
+
+deploy:
+  stage: deploy
+  script:
+    #- copiar os arquivos para o servidor de prod
+    - echo "deploy para servidor"
+  only:
+    - master  # Implante apenas em commits na branch master

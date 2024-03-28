@@ -24,6 +24,7 @@ test:
 deploy:
   stage: deploy
   script:
-    - #copiar os arquivos para o servidor de prod
+    #- copiar os arquivos para o servidor de prod
+    - echo "deploy para servidor"
   only:
     - master  # Implante apenas em commits na branch master

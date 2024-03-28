@@ -1,5 +1,6 @@
 from sqlalchemy import banco
 
+
 __tablename__ = 'hoteis'
     
 hotel_id = banco.Column(banco.String, primary_key=True)
